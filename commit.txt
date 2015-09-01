@@ -1,0 +1,18 @@
+4fe4ed1 Apply :hover and pointer styles to indicate when table items are clickable
+diff --git a/_less/screen.less b/_less/screen.less
+index 92c8f2a..f950358 100644
+--- a/_less/screen.less
++++ b/_less/screen.less
+@@ -1058,6 +1058,12 @@ table.validation tr.details td {
+ table.validation .ui-icon {
+         display: inline-block;
+ }
++table.validation tr:nth-child(1n+1)>td:first-child{
++	cursor:pointer;
++}
++table.validation tr:nth-child(1n+1)>td:hover{
++	color:#000;
++}
+ 
+ .received_transactions td {
+         width: 50%;
