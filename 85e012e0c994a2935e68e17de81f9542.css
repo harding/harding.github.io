@@ -222,8 +222,8 @@ table.privacy-comparison td:nth-child(1n+2){width:120px}
 table.validation{width:100%}
 table.validation tr.details td{background-color:#F5F5F5;padding:10px}
 table.validation .ui-icon{display:inline-block}
-table.validation tr:nth-child(1n+1)>td:first-child{cursor:pointer}
-table.validation tr:nth-child(1n+1)>td:hover{color:#000}
+table.validation tr:nth-child(even)>td{cursor:pointer}
+table.validation tr:nth-child(even)>td:hover{color:#000}
 .received_transactions td{width:50%}
 #system-requirements-accordion div{padding:0}
 button.js.showcolumn{border:0;margin:15px}

@@ -6,7 +6,722 @@ var search_data = [
 
 
 
-,
+
+{
+label: "51 percent attack",
+uri: "/en/glossary/51-percent-attack",
+category: "Glossary"
+},
+{
+label: "Address",
+uri: "/en/glossary/address",
+category: "Glossary"
+},
+{
+label: "Bare multisig",
+uri: "/en/glossary/multisig",
+category: "Glossary"
+},
+{
+label: "Base58check",
+uri: "/en/glossary/base58check",
+category: "Glossary"
+},
+{
+label: "Best block chain",
+uri: "/en/glossary/block-chain",
+category: "Glossary"
+},
+{
+label: "Best header chain",
+uri: "/en/glossary/header-chain",
+category: "Glossary"
+},
+{
+label: "Bitcoins",
+uri: "/en/glossary/denominations",
+category: "Glossary"
+},
+{
+label: "Block",
+uri: "/en/glossary/block",
+category: "Glossary"
+},
+{
+label: "Block 0",
+uri: "/en/glossary/genesis-block",
+category: "Glossary"
+},
+{
+label: "Block chain",
+uri: "/en/glossary/block-chain",
+category: "Glossary"
+},
+{
+label: "Block header",
+uri: "/en/glossary/block-header",
+category: "Glossary"
+},
+{
+label: "Block height",
+uri: "/en/glossary/block-height",
+category: "Glossary"
+},
+{
+label: "Block reward",
+uri: "/en/glossary/block-reward",
+category: "Glossary"
+},
+{
+label: "Blocks-first sync",
+uri: "/en/glossary/blocks-first-sync",
+category: "Glossary"
+},
+{
+label: "Bloom filter",
+uri: "/en/glossary/bloom-filter",
+category: "Glossary"
+},
+{
+label: "Chain code",
+uri: "/en/glossary/chain-code",
+category: "Glossary"
+},
+{
+label: "Change address",
+uri: "/en/glossary/change-address",
+category: "Glossary"
+},
+{
+label: "Change output",
+uri: "/en/glossary/change-address",
+category: "Glossary"
+},
+{
+label: "Child key",
+uri: "/en/glossary/child-key",
+category: "Glossary"
+},
+{
+label: "Child private key",
+uri: "/en/glossary/child-key",
+category: "Glossary"
+},
+{
+label: "Child public key",
+uri: "/en/glossary/child-key",
+category: "Glossary"
+},
+{
+label: "Coinbase",
+uri: "/en/glossary/coinbase",
+category: "Glossary"
+},
+{
+label: "Coinbase transaction",
+uri: "/en/glossary/coinbase-transaction",
+category: "Glossary"
+},
+{
+label: "CompactSize",
+uri: "/en/glossary/compactsize",
+category: "Glossary"
+},
+{
+label: "Compressed public key",
+uri: "/en/glossary/compressed-public-key",
+category: "Glossary"
+},
+{
+label: "Confirmation score",
+uri: "/en/glossary/confirmation-score",
+category: "Glossary"
+},
+{
+label: "Confirmations",
+uri: "/en/glossary/confirmation-score",
+category: "Glossary"
+},
+{
+label: "Confirmed transaction",
+uri: "/en/glossary/confirmation-score",
+category: "Glossary"
+},
+{
+label: "Consensus",
+uri: "/en/glossary/consensus",
+category: "Glossary"
+},
+{
+label: "Consensus rules",
+uri: "/en/glossary/consensus-rules",
+category: "Glossary"
+},
+{
+label: "Data carrier transaction",
+uri: "/en/glossary/null-data-transaction",
+category: "Glossary"
+},
+{
+label: "Data-pushing op code",
+uri: "/en/glossary/op-code",
+category: "Glossary"
+},
+{
+label: "Denomination",
+uri: "/en/glossary/denominations",
+category: "Glossary"
+},
+{
+label: "Difficulty",
+uri: "/en/glossary/difficulty",
+category: "Glossary"
+},
+{
+label: "DNS seed",
+uri: "/en/glossary/dns-seed",
+category: "Glossary"
+},
+{
+label: "Double spend",
+uri: "/en/glossary/double-spend",
+category: "Glossary"
+},
+{
+label: "Escrow contract",
+uri: "/en/glossary/escrow-contract",
+category: "Glossary"
+},
+{
+label: "Extended key",
+uri: "/en/glossary/extended-key",
+category: "Glossary"
+},
+{
+label: "Fork",
+uri: "/en/glossary/fork",
+category: "Glossary"
+},
+{
+label: "Free transaction",
+uri: "/en/glossary/high-priority-transaction",
+category: "Glossary"
+},
+{
+label: "Generation transaction",
+uri: "/en/glossary/coinbase-transaction",
+category: "Glossary"
+},
+{
+label: "Genesis block",
+uri: "/en/glossary/genesis-block",
+category: "Glossary"
+},
+{
+label: "Hard fork",
+uri: "/en/glossary/hard-fork",
+category: "Glossary"
+},
+{
+label: "Hardened extended key",
+uri: "/en/glossary/hardened-extended-key",
+category: "Glossary"
+},
+{
+label: "HD protocol",
+uri: "/en/glossary/hd-protocol",
+category: "Glossary"
+},
+{
+label: "HD wallet",
+uri: "/en/glossary/hd-protocol",
+category: "Glossary"
+},
+{
+label: "HD wallet seed",
+uri: "/en/glossary/hd-wallet-seed",
+category: "Glossary"
+},
+{
+label: "Header",
+uri: "/en/glossary/block-header",
+category: "Glossary"
+},
+{
+label: "Header chain",
+uri: "/en/glossary/header-chain",
+category: "Glossary"
+},
+{
+label: "Headers-first sync",
+uri: "/en/glossary/headers-first-sync",
+category: "Glossary"
+},
+{
+label: "Height",
+uri: "/en/glossary/block-height",
+category: "Glossary"
+},
+{
+label: "High-priority transaction",
+uri: "/en/glossary/high-priority-transaction",
+category: "Glossary"
+},
+{
+label: "IBD",
+uri: "/en/glossary/initial-block-download",
+category: "Glossary"
+},
+{
+label: "Initial block download",
+uri: "/en/glossary/initial-block-download",
+category: "Glossary"
+},
+{
+label: "Input",
+uri: "/en/glossary/input",
+category: "Glossary"
+},
+{
+label: "Internal byte order",
+uri: "/en/glossary/internal-byte-order",
+category: "Glossary"
+},
+{
+label: "Inventory",
+uri: "/en/glossary/inventory",
+category: "Glossary"
+},
+{
+label: "Lightweight client",
+uri: "/en/glossary/simplified-payment-verification",
+category: "Glossary"
+},
+{
+label: "Locktime",
+uri: "/en/glossary/locktime",
+category: "Glossary"
+},
+{
+label: "Mainnet",
+uri: "/en/glossary/mainnet",
+category: "Glossary"
+},
+{
+label: "Majority attack",
+uri: "/en/glossary/51-percent-attack",
+category: "Glossary"
+},
+{
+label: "Master chain code",
+uri: "/en/glossary/master-chain-code-and-private-key",
+category: "Glossary"
+},
+{
+label: "Master private key",
+uri: "/en/glossary/master-chain-code-and-private-key",
+category: "Glossary"
+},
+{
+label: "Merkle block",
+uri: "/en/glossary/merkle-block",
+category: "Glossary"
+},
+{
+label: "Merkle root",
+uri: "/en/glossary/merkle-root",
+category: "Glossary"
+},
+{
+label: "Merkle tree",
+uri: "/en/glossary/merkle-tree",
+category: "Glossary"
+},
+{
+label: "Message header",
+uri: "/en/glossary/message-header",
+category: "Glossary"
+},
+{
+label: "Miner",
+uri: "/en/glossary/mining",
+category: "Glossary"
+},
+{
+label: "Miners fee",
+uri: "/en/glossary/transaction-fee",
+category: "Glossary"
+},
+{
+label: "Minimum relay fee",
+uri: "/en/glossary/minimum-relay-fee",
+category: "Glossary"
+},
+{
+label: "Mining",
+uri: "/en/glossary/mining",
+category: "Glossary"
+},
+{
+label: "Multisig",
+uri: "/en/glossary/multisig",
+category: "Glossary"
+},
+{
+label: "nBits",
+uri: "/en/glossary/nbits",
+category: "Glossary"
+},
+{
+label: "Network difficulty",
+uri: "/en/glossary/difficulty",
+category: "Glossary"
+},
+{
+label: "Network magic",
+uri: "/en/glossary/start-string",
+category: "Glossary"
+},
+{
+label: "nLockTime",
+uri: "/en/glossary/locktime",
+category: "Glossary"
+},
+{
+label: "Non-data-pushing op code",
+uri: "/en/glossary/op-code",
+category: "Glossary"
+},
+{
+label: "Null data transaction",
+uri: "/en/glossary/null-data-transaction",
+category: "Glossary"
+},
+{
+label: "Op code",
+uri: "/en/glossary/op-code",
+category: "Glossary"
+},
+{
+label: "OP_RETURN transaction",
+uri: "/en/glossary/null-data-transaction",
+category: "Glossary"
+},
+{
+label: "Orphan block",
+uri: "/en/glossary/orphan-block",
+category: "Glossary"
+},
+{
+label: "Outpoint",
+uri: "/en/glossary/outpoint",
+category: "Glossary"
+},
+{
+label: "Output",
+uri: "/en/glossary/output",
+category: "Glossary"
+},
+{
+label: "P2PKH address",
+uri: "/en/glossary/p2pkh-address",
+category: "Glossary"
+},
+{
+label: "P2PKH output",
+uri: "/en/glossary/p2pkh-address",
+category: "Glossary"
+},
+{
+label: "P2SH address",
+uri: "/en/glossary/p2sh-address",
+category: "Glossary"
+},
+{
+label: "P2SH multisig",
+uri: "/en/glossary/p2sh-multisig",
+category: "Glossary"
+},
+{
+label: "P2SH output",
+uri: "/en/glossary/p2sh-address",
+category: "Glossary"
+},
+{
+label: "Parent key",
+uri: "/en/glossary/parent-key",
+category: "Glossary"
+},
+{
+label: "Parent private key",
+uri: "/en/glossary/parent-key",
+category: "Glossary"
+},
+{
+label: "Parent public key",
+uri: "/en/glossary/parent-key",
+category: "Glossary"
+},
+{
+label: "Payment protocol",
+uri: "/en/glossary/payment-protocol",
+category: "Glossary"
+},
+{
+label: "Payment request",
+uri: "/en/glossary/payment-protocol",
+category: "Glossary"
+},
+{
+label: "POW",
+uri: "/en/glossary/proof-of-work",
+category: "Glossary"
+},
+{
+label: "Private extended key",
+uri: "/en/glossary/extended-key",
+category: "Glossary"
+},
+{
+label: "Private key",
+uri: "/en/glossary/private-key",
+category: "Glossary"
+},
+{
+label: "Proof of work",
+uri: "/en/glossary/proof-of-work",
+category: "Glossary"
+},
+{
+label: "Pubkey script",
+uri: "/en/glossary/pubkey-script",
+category: "Glossary"
+},
+{
+label: "Public extended key",
+uri: "/en/glossary/extended-key",
+category: "Glossary"
+},
+{
+label: "Public key",
+uri: "/en/glossary/public-key",
+category: "Glossary"
+},
+{
+label: "Raw transaction",
+uri: "/en/glossary/serialized-transaction",
+category: "Glossary"
+},
+{
+label: "Redeem script",
+uri: "/en/glossary/redeem-script",
+category: "Glossary"
+},
+{
+label: "RedeemScript",
+uri: "/en/glossary/redeem-script",
+category: "Glossary"
+},
+{
+label: "Regression test mode",
+uri: "/en/glossary/regression-test-mode",
+category: "Glossary"
+},
+{
+label: "Regtest",
+uri: "/en/glossary/regression-test-mode",
+category: "Glossary"
+},
+{
+label: "Relay fee",
+uri: "/en/glossary/minimum-relay-fee",
+category: "Glossary"
+},
+{
+label: "Root seed",
+uri: "/en/glossary/hd-wallet-seed",
+category: "Glossary"
+},
+{
+label: "RPC byte order",
+uri: "/en/glossary/rpc-byte-order",
+category: "Glossary"
+},
+{
+label: "Satoshis",
+uri: "/en/glossary/denominations",
+category: "Glossary"
+},
+{
+label: "ScriptPubKey",
+uri: "/en/glossary/pubkey-script",
+category: "Glossary"
+},
+{
+label: "ScriptSig",
+uri: "/en/glossary/signature-script",
+category: "Glossary"
+},
+{
+label: "Sequence number",
+uri: "/en/glossary/sequence-number",
+category: "Glossary"
+},
+{
+label: "Serialized block",
+uri: "/en/glossary/serialized-block",
+category: "Glossary"
+},
+{
+label: "Serialized transaction",
+uri: "/en/glossary/serialized-transaction",
+category: "Glossary"
+},
+{
+label: "Sighash",
+uri: "/en/glossary/signature-hash",
+category: "Glossary"
+},
+{
+label: "SIGHASH_ALL",
+uri: "/en/glossary/sighash-all",
+category: "Glossary"
+},
+{
+label: "SIGHASH_ANYONECANPAY",
+uri: "/en/glossary/sighash-anyonecanpay",
+category: "Glossary"
+},
+{
+label: "SIGHASH_NONE",
+uri: "/en/glossary/sighash-none",
+category: "Glossary"
+},
+{
+label: "SIGHASH_SINGLE",
+uri: "/en/glossary/sighash-single",
+category: "Glossary"
+},
+{
+label: "Signature",
+uri: "/en/glossary/signature",
+category: "Glossary"
+},
+{
+label: "Signature hash",
+uri: "/en/glossary/signature-hash",
+category: "Glossary"
+},
+{
+label: "Signature script",
+uri: "/en/glossary/signature-script",
+category: "Glossary"
+},
+{
+label: "Simplified Payment Verification",
+uri: "/en/glossary/simplified-payment-verification",
+category: "Glossary"
+},
+{
+label: "Soft fork",
+uri: "/en/glossary/soft-fork",
+category: "Glossary"
+},
+{
+label: "SPV",
+uri: "/en/glossary/simplified-payment-verification",
+category: "Glossary"
+},
+{
+label: "Stale block",
+uri: "/en/glossary/stale-block",
+category: "Glossary"
+},
+{
+label: "Standard Transaction",
+uri: "/en/glossary/standard-transaction",
+category: "Glossary"
+},
+{
+label: "Start string",
+uri: "/en/glossary/start-string",
+category: "Glossary"
+},
+{
+label: "Target",
+uri: "/en/glossary/nbits",
+category: "Glossary"
+},
+{
+label: "Testnet",
+uri: "/en/glossary/testnet",
+category: "Glossary"
+},
+{
+label: "Thin client",
+uri: "/en/glossary/simplified-payment-verification",
+category: "Glossary"
+},
+{
+label: "Transaction fee",
+uri: "/en/glossary/transaction-fee",
+category: "Glossary"
+},
+{
+label: "Transaction malleability",
+uri: "/en/glossary/malleability",
+category: "Glossary"
+},
+{
+label: "Transaction mutability",
+uri: "/en/glossary/malleability",
+category: "Glossary"
+},
+{
+label: "Txid",
+uri: "/en/glossary/txid",
+category: "Glossary"
+},
+{
+label: "TxIn",
+uri: "/en/glossary/input",
+category: "Glossary"
+},
+{
+label: "TxOut",
+uri: "/en/glossary/output",
+category: "Glossary"
+},
+{
+label: "Unconfirmed transaction",
+uri: "/en/glossary/confirmation-score",
+category: "Glossary"
+},
+{
+label: "UTXO",
+uri: "/en/glossary/unspent-transaction-output",
+category: "Glossary"
+},
+{
+label: "Wallet",
+uri: "/en/glossary/wallet",
+category: "Glossary"
+},
+{
+label: "Wallet Import Format",
+uri: "/en/glossary/wallet-import-format",
+category: "Glossary"
+},
+{
+label: "Watch-only address",
+uri: "/en/glossary/watch-only-address",
+category: "Glossary"
+},
+{
+label: "WIF",
+uri: "/en/glossary/wallet-import-format",
+category: "Glossary"
+},
 
 
 
