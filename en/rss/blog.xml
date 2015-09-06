@@ -5,8 +5,8 @@
     <description>News about Bitcoin.org</description>
     <link>//</link>
     <atom:link href="//en/rss/blog.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 01 Sep 2015 21:31:40 -0400</pubDate>
-    <lastBuildDate>Tue, 01 Sep 2015 21:31:40 -0400</lastBuildDate>
+    <pubDate>Sun, 06 Sep 2015 14:11:18 -0400</pubDate>
+    <lastBuildDate>Sun, 06 Sep 2015 14:11:18 -0400</lastBuildDate>
     <generator>Jekyll v1.3.0</generator>
     
       <item>
@@ -74,7 +74,7 @@ documentation maintainer,
 &lt;h2 id=&quot;thank-you&quot;&gt;Thank You&lt;/h2&gt;
 
 &lt;p&gt;Thank you to everyone who made these pages possible, especially the
-people who reviewed Bitcoin.org pull requests &lt;a href=&quot;/&quot;&gt;FIXME-final-PR&lt;/a&gt;,
+people who reviewed Bitcoin.org pull requests &lt;a href=&quot;https://github.com/bitcoin-dot-org/bitcoin.org/pull/1044&quot;&gt;1044&lt;/a&gt;,
 &lt;a href=&quot;https://github.com/bitcoin-dot-org/bitcoin.org/pull/1009&quot;&gt;1009&lt;/a&gt;, &lt;a href=&quot;https://github.com/bitcoin-dot-org/bitcoin.org/pull/1007&quot;&gt;1007&lt;/a&gt;, &lt;a href=&quot;https://github.com/bitcoin-dot-org/bitcoin.org/pull/966&quot;&gt;966&lt;/a&gt;, &lt;a href=&quot;https://github.com/bitcoin-dot-org/bitcoin.org/pull/957&quot;&gt;957&lt;/a&gt;, and &lt;a href=&quot;https://github.com/bitcoin-dot-org/bitcoin.org/pull/869&quot;&gt;869&lt;/a&gt; as well as the
 &lt;a href=&quot;https://bitcoinfoundation.org/&quot;&gt;Bitcoin Foundation&lt;/a&gt; for their funding of the Bitcoin.org server
 during the time these pages were written.&lt;/p&gt;

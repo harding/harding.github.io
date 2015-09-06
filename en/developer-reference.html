@@ -10,7 +10,7 @@
 <title>Developer Reference - Bitcoin</title>
 
 <link rel="stylesheet" href="/css/font-awesome-4.4.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="/85e012e0c994a2935e68e17de81f9542.css" />
+<link rel="stylesheet" type="text/css" href="/97eadabc73ae117b9ba9260c246249ca.css" />
 <!--[if lt IE 8]><link rel="stylesheet" type="text/css" href="/aea05d35a295129ee537890954648172.css" /><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
 <!--[if IE 8]><link rel="stylesheet" type="text/css" href="/fd0a6cf294d0cbfc3f2fbd57f8b17a07.css" /><![endif]-->
 
@@ -3668,25 +3668,45 @@ from raw hex.</p>
 | <a href="https://github.com/bitcoin-dot-org/bitcoin.org/issues/new?body=Source%20File%3A%20_includes/ref/bitcoin-core/rpcs/intro.md%0A%0A">Report Issue</a>
 | <a href="/en/development#devcommunities">Discuss</a></div>
 
-  <p>Bitcoin Core provides a large number of Remote Procedure Calls (<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPCs</a>)
-using a <a href="https://en.wikipedia.org/wiki/JSON-RPC">HTTP JSON-RPC version 1.0</a> interface. Any program can access
-the <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> using JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a>, but Bitcoin Core also provides the
-<code>bitcoin-cli</code> command to wrap the JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> access for Command Line
-Interface (CLI) users. Most of the <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> examples in this documentation
-use <code>bitcoin-cli</code> for simplicity, so this subsection describes raw
-JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface and how the command-line interface translates it.</p>
+  <p>Bitcoin Core provides a remote procedure call (<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a>) interface for various
+administrative tasks, <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> operations, and queries about <a href="/en/developer-guide#term-network" title="The Bitcoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> and <a href="/en/glossary/block-chain" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block
+chain</a> data.</p>
 
-  <p>In order to start <code>bitcoind</code>, you will need to set a password for
-JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> in the <code>bitcoin.conf</code> file. See the <a href="/en/developer-examples">Examples
-Page</a> for details. JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> starts on port 8332 for <a href="/en/glossary/mainnet" title="The original and main network for Bitcoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>
-and 18332 for <a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Bitcoin mainnet." class="auto-link">testnet</a> and <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest</a>. By default, <code>bitcoind</code> doesn’t use a
-JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> user, but you can set one (see <code>bitcoind --help</code>).</p>
+  <p>If you start Bitcoin Core using <code>bitcoin-qt</code>, the <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface is disabled by
+default. To enable it, set <code>server=1</code> in <code>bitcoin.conf</code> or supply the <code>-server</code>
+argument when invoking the program. If you start Bitcoin Core using <code>bitcoind</code>,
+the <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface is enabled by default.</p>
 
-  <p>The interface is not intended for public access and is only accessible
-from localhost by default.</p>
+  <p>The interface requires the user to provide a password for authenticating <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a>
+requests. This password can be set either using the <code>rpcpassword</code> property in
+<code>bitcoin.conf</code> or by supplying the <code>-rpcpassword</code> program argument. Optionally a
+username can be set using the <code>rpcuser</code> configuration value. See the <a href="/en/developer-examples">Examples
+Page</a> for more information about setting Bitcoin Core configuration
+values.</p>
 
-  <p><a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> are made using the standard JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> 1.0 syntax, which sends several
-standard arguments:</p>
+  <p>Open-source client libraries for the <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface are readily available in most
+modern programming languages, so you probably don’t need to write your own from
+scratch. Bitcoin Core also ships with its own compiled C++ <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> client,
+<code>bitcoin-cli</code>, located in the <code>bin</code> directory alongside <code>bitcoind</code> and
+<code>bitcoin-qt</code>. The <code>bitcoin-cli</code> program can be used as a command-line interface
+(CLI) to Bitcoin Core or for making <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> calls from applications written in
+languages lacking a suitable native client. The remainder of this section
+describes the Bitcoin Core <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> protocol in detail.</p>
+
+  <p>The Bitcoin Core <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> service listens for HTTP <code>POST</code> requests on port 8332 in
+<a href="/en/glossary/mainnet" title="The original and main network for Bitcoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a> mode or 18332 in <a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Bitcoin mainnet." class="auto-link">testnet</a> or <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a>. The port number can be changed
+by setting <code>rpcport</code> in <code>bitcoin.conf</code>. By default the <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> service binds to your
+server’s <a href="https://en.wikipedia.org/wiki/Localhost">localhost</a> loopback
+network interface so it’s not accessible from other servers.
+Authentication is implemented using <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">HTTP basic
+authentication</a>. <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a>
+HTTP requests must include a <code>Content-Type</code> <a href="/en/glossary/block-header" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> set to <code>text/plain</code> and a
+<code>Content-Length</code> <a href="/en/glossary/block-header" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> set to the size of the request body.</p>
+
+  <p>The format of the request body and response data is based on <a href="http://json-rpc.org/wiki/specification">version 1.0 of the
+JSON-RPC specification</a>. Specifically,
+the HTTP <code>POST</code> data of a request must be a JSON object with the following
+format:</p>
 
   <table class="ntpd">
     <thead>
@@ -3699,108 +3719,72 @@ standard arguments:</p>
     </thead>
     <tbody>
       <tr>
-        <td><a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a></td>
+        <td>Request</td>
         <td>object</td>
         <td>Required<br />(exactly 1)</td>
-        <td>An object containing the standard <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> arguments</td>
+        <td>The JSON-RPC request object</td>
       </tr>
       <tr>
         <td>→ <br /><code>jsonrpc</code></td>
         <td>number (real)</td>
         <td>Optional<br />(0 or 1)</td>
-        <td>The version of JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> used.  Bitcoin Core currently ignores this, as it only supports version 1.0.  Default is <code>1.0</code></td>
+        <td>Version indicator for the JSON-RPC request. Currently ignored by Bitcoin Core.</td>
       </tr>
       <tr>
         <td>→ <br /><code>id</code></td>
         <td>string</td>
-        <td>Required<br />(exactly 1)</td>
-        <td>An arbitrary string that will be returned when the response is sent.  May be set to an empty string (“”)</td>
+        <td>Optional<br />(0 or 1)</td>
+        <td>An arbitrary string that will be returned with the response.  May be omitted or set to an empty string (“”)</td>
       </tr>
       <tr>
         <td>→ <br /><code>method</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
-        <td>The <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a>, such as <a href="/en/developer-reference#getbestblockhash" class="auto-link"><code>getbestblockhash</code></a>.  See the <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> section for a list of available commands</td>
+        <td>The <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> method name (e.g. <a href="/en/developer-reference#getblock" class="auto-link"><code>getblock</code></a>).  See the <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> section for a list of available methods.</td>
       </tr>
       <tr>
         <td>→ <br /><code>params</code></td>
         <td>array</td>
-        <td>Required<br />(exactly 1)</td>
-        <td>An array containing parameters for the <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a>.  May be an empty array if allowed by the particular <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a></td>
+        <td>Optional<br />(0 or 1)</td>
+        <td>An array containing positional parameter values for the <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a>.  May be an empty array or omitted for <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> calls that don’t have any required parameters.</td>
       </tr>
       <tr>
         <td>→ → <br />Parameter</td>
         <td><em>any</em></td>
         <td>Optional<br />(0 or more)</td>
-        <td>A parameter.  May be any JSON type allowed by the particular <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a></td>
+        <td>A parameter.  May be any JSON type allowed by the particular <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> method</td>
       </tr>
     </tbody>
   </table>
 
-  <p>In table above and in other tables describing JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> input
-and output, we use the following formatting</p>
+  <p>In the table above and in other tables describing <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> input and
+output, we use the following conventions</p>
 
   <ul>
     <li>
-      <p>“→” to indicate an argument that is the child of a JSON array or
-JSON object. For example, “→ → Parameter” above means Parameter
-is the child of the <code>params</code> array which itself is a child of the
-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> array.</p>
+      <p>“→” indicates an argument that is the child of a JSON array or JSON object.
+For example, “→ → Parameter” above means Parameter is the child of the
+<code>params</code> array which itself is a child of the Request object.</p>
     </li>
     <li>
-      <p>“Plain Text” names (like “<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a>” above) are unnamed in the actual
-JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a></p>
+      <p>Plain-text names like “Request” are unnamed in the actual JSON object</p>
     </li>
     <li>
-      <p><code>literal</code> names (like <code>id</code> above) are the strings that appear in the
-actual JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a></p>
+      <p>Code-style names like <code>params</code> are literal strings that appear in the JSON
+object.</p>
     </li>
     <li>
-      <p>Type (specifics) are the general JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> type and the specific
-Bitcoin Core type</p>
+      <p>“Type” is the JSON data type and the specific Bitcoin Core type.</p>
     </li>
     <li>
-      <p>Required/Optional describe whether a field must be returned within its
-containing array or object. (So an optional object may still have
-required children.)</p>
+      <p>“Presence” indicates whether or not a field must be present within its
+ containing array or object. Note that an optional object may still have
+ required children.</p>
     </li>
   </ul>
 
-  <p>For example, here is the JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> requesting the hash of the latest
-<a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> on the local <a href="/en/glossary/block-chain" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a>:</p>
-
-  <div class="highlight"><pre><code class="json"><span class="p">{</span>
-    <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;bitcoin.org developer documentation&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;getbestblockhash&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[]</span>
-<span class="p">}</span>
-</code></pre></div>
-
-  <p>We can send that to a local Bitcoin Core running on <a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Bitcoin mainnet." class="auto-link">testnet</a> using cURL
-with the following command:</p>
-
-  <div class="highlight"><pre><code class="bash">curl --user <span class="s1">&#39;:your_password&#39;</span> --data-binary <span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">  {</span>
-<span class="s1">      &quot;jsonrpc&quot;: &quot;1.0&quot;,</span>
-<span class="s1">      &quot;id&quot;:&quot;bitcoin.org developer documentation&quot;,</span>
-<span class="s1">      &quot;method&quot;: &quot;getbestblockhash&quot;,</span>
-<span class="s1">      &quot;params&quot;: []</span>
-<span class="s1">  }&#39;&#39;&#39;</span> <span class="se">\</span>
-  -H <span class="s1">&#39;content-type: text/plain;&#39;</span> http://127.0.0.1:18332/
-</code></pre></div>
-
-  <p>The output will be sent using the standard JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> 1.0
-format. For example (whitespace added):</p>
-
-  <div class="highlight"><pre><code class="json"><span class="p">{</span>
-    <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000bd68bfdf381efd5fff17c723d2bb645bcbb215a6e333d4204888e951&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;bitcoin.org developer documentation&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-
-  <p>The standard JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> 1.0 result format is described below:</p>
+  <p>The HTTP response data for a <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> request is a JSON object with the following
+format:</p>
 
   <table class="ntpd">
     <thead>
@@ -3813,85 +3797,144 @@ format. For example (whitespace added):</p>
     </thead>
     <tbody>
       <tr>
-        <td>Result</td>
+        <td>Response</td>
         <td>object</td>
         <td>Required<br />(exactly 1)</td>
-        <td>An object describing the results</td>
+        <td>The JSON-RPC response object.</td>
       </tr>
       <tr>
         <td>→ <br /><code>result</code></td>
         <td><em>any</em></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The results as any JSON data type.  If an error occured, set to <code>null</code></td>
+        <td>The <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> output whose type varies by call.  Has value <code>null</code> if an error occurred.</td>
       </tr>
       <tr>
         <td>→ <br /><code>error</code></td>
         <td>null/object</td>
         <td>Required<br />(exactly 1)</td>
-        <td>If no error occurred, set to <code>null</code>.  If an error occured, an object describing the error</td>
+        <td>An object describing the error if one occurred, otherwise <code>null</code>.</td>
       </tr>
       <tr>
         <td>→ → <br /><code>code</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
-        <td>The error code as set by the returning function and defined in Bitcoin Core’s <a href="https://github.com/bitcoin/bitcoin/blob/f914f1a746d7f91951c1da262a4a749dd3ebfa71/src/rpcprotocol.h">rpcprotocol.h</a></td>
+        <td>The error code returned by the <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> function call. See <a href="https://github.com/bitcoin/bitcoin/blob/f914f1a746d7f91951c1da262a4a749dd3ebfa71/src/rpcprotocol.h">rpcprotocol.h</a> for a full list of error codes and their meanings.</td>
       </tr>
       <tr>
         <td>→ → <br /><a href="/en/developer-guide#term-message" title="A parameter of bitcoin: URIs which allows the receiver to optionally specify a message to the spender" class="auto-link"><code>message</code></a></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
-        <td>An attempt to describe the problem in human-readable text.  May be an empty string (“”).  Bitcoin Core often returns help text with embedded newline strings (“\n”); <code>bitcoin-cli</code> can expand these to actual newlines</td>
+        <td>A text description of the error.  May be an empty string (“”).</td>
       </tr>
       <tr>
         <td>→ <br /><code>id</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
-        <td>The arbitrary string passed in when the <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> was called</td>
+        <td>The value of <code>id</code> provided with the request. Has value <code>null</code> if the <code>id</code> field was omitted in the request.</td>
       </tr>
     </tbody>
   </table>
 
-  <p>For an example of the error output, here’s the result
-after passing an invalid <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> to the <a href="/en/developer-reference#sendtoaddress" class="auto-link"><code>sendtoaddress</code> RPC</a>
-(whitespace added):</p>
+  <p>As an example, here is the JSON-RPC request object for the hash of
+the <a href="/en/glossary/genesis-block" title="The first block in the Bitcoin block chain." class="auto-link">genesis block</a>:</p>
+
+  <div class="highlight"><pre><code class="json"><span class="p">{</span>
+    <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;getblockhash&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;foo&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+  <p>The command to send this request using <code>bitcoin-cli</code> is:</p>
+
+  <div class="highlight"><pre><code class="bash">bitcoin-cli getblockhash 0
+</code></pre></div>
+
+  <p>Alternatively, we could <code>POST</code> this request using the cURL command-line program
+as follows:</p>
+
+  <div class="highlight"><pre><code class="bash">curl --user <span class="s1">&#39;:my_secret_password&#39;</span> --data-binary <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">  {</span>
+<span class="s1">      &quot;method&quot;: &quot;getblockhash&quot;,</span>
+<span class="s1">      &quot;params&quot;: [0],</span>
+<span class="s1">      &quot;id&quot;: &quot;foo&quot;</span>
+<span class="s1">  }&#39;&#39;&#39;</span> <span class="se">\</span>
+  --header <span class="s1">&#39;Content-Type: text/plain;&#39;</span> localhost:8332
+</code></pre></div>
+
+  <p>The HTTP response data for this request would be:</p>
+
+  <div class="highlight"><pre><code class="json"><span class="p">{</span>
+    <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;foo&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+  <p>Note: In order to minimize its size, the raw JSON response from Bitcoin Core
+doesn’t include any extraneous whitespace characters. Here we’ve added
+whitespace to make the object more readable. Speaking of which, <code>bitcoin-cli</code>
+also transforms the raw response to make it more human-readable. It:</p>
+
+  <ul>
+    <li>Adds whitespace indentation to JSON objects</li>
+    <li>Expands escaped newline characters (“\n”) into actual newlines</li>
+    <li>Returns only the value of the <code>result</code> field if there’s no error</li>
+    <li>Strips the outer double-quotes around <code>result</code>s of type string</li>
+    <li>Returns only the <code>error</code> field if there’s an error</li>
+  </ul>
+
+  <p>Continuing with the example above, the output from the <code>bitcoin-cli</code>
+command would be simply:</p>
+
+  <div class="highlight"><pre><code class="text">000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+</code></pre></div>
+
+  <p>If there’s an error processing a request, Bitcoin Core sets the <code>result</code> field
+to <code>null</code> and provides information about the error in the  <code>error</code> field. For
+example, a request for the <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> hash at <a href="/en/glossary/block-height" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">block height</a> -1 would be met with the
+following response (again, whitespace added for clarity):</p>
 
   <div class="highlight"><pre><code class="json"><span class="p">{</span>
     <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
     <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">-5</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid Bitcoin address&quot;</span>
+        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">-8</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Block height out of range&quot;</span>
     <span class="p">},</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;bitcoin.org developer documentation&quot;</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;foo&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 
-  <p>The <code>bitcoin-cli</code> command can save command line users a lot of typing
-compared to using cURL or another HTTP-sending command. For example, to
-get the <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> hash we got before, we would use the following command:</p>
+  <p>If <code>bitcoin-cli</code> encounters an error, it exits with a non-zero status code and
+outputs the <code>error</code> field as text to the process’s standard error
+stream:</p>
 
-  <div class="highlight"><pre><code class="bash">bitcoin-cli getbestblockhash
+  <div class="highlight"><pre><code class="text">error: {&quot;code&quot;: -8, &quot;message&quot;: &quot;Block height out of range&quot;}
 </code></pre></div>
 
-  <p>For non-error output, <code>bitcoin-cli</code> will only display the
-value of the <code>result</code> field, and if it’s a string, <code>bitcoin-cli</code> will
-remove its JSON quotation marks. For example, the result for the
-command above:</p>
+  <p>Starting in Bitcoin Core version 0.7.0, the <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface supports request
+batching as described in <a href="http://www.jsonrpc.org/specification#batch">version 2.0 of the JSON-RPC
+specification</a>. To initiate multiple
+<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> requests within a single HTTP request, a client can <code>POST</code> a JSON array
+filled with Request objects. The HTTP response data is then a JSON array filled
+with the corresponding Response objects. Depending on your usage pattern,
+request batching may provide significant performance gains. The <code>bitcoin-cli</code>
+<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> client does not support batch requests.</p>
 
-  <div class="highlight"><pre><code class="text">00000000bd68bfdf381efd5fff17c723d2bb645bcbb215a6e333d4204888e951
+  <p>To keep this documentation compact and readable, the examples for each of the
+available <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> calls will be given as <code>bitcoin-cli</code> commands:</p>
+
+  <div class="highlight"><pre><code class="text">bitcoin-cli [options] &lt;method name&gt; &lt;param1&gt; &lt;param2&gt; ...
 </code></pre></div>
 
-  <p>For errors, <code>bitcoin-cli</code> will display only the <code>error</code> object.  For
-example, the result of the invalid <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> command above as formatted by
-<code>bitcoin-cli</code>:</p>
+  <p>This translates into an JSON-RPC Request object of the form:</p>
 
-  <div class="highlight"><pre><code class="json"><span class="err">error:</span> <span class="p">{</span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="mi">-5</span><span class="p">,</span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Invalid Bitcoin address&quot;</span><span class="p">}</span>
+  <div class="highlight"><pre><code class="json"><span class="p">{</span>
+    <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;method name&gt;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&lt;param1&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;param2&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;...&quot;</span> <span class="p">],</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;foo&quot;</span>
+<span class="p">}</span>
 </code></pre></div>
-
-  <p>Because <code>bitcoin-cli</code> abstracts away the parts of JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> we would need
-to repeatedly describe in each <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> description below, we describe the
-Bitcoin Core <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> using <code>bitcoin-cli</code>. However, using an actual
-programming interface to the full JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> will serve you much better
-for automated tasks.</p>
 
   <p><a href="/en/developer-reference#term-proper-money-handling" title="Bitcoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" id="term-proper-money-handling" class="term"><img src="/img/icons/icon_warning.svg" alt="Warning icon" /> <strong>Warning:</strong></a> if you write
 programs using the JSON-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface, you must ensure they handle high-precision
@@ -14769,7 +14812,7 @@ untrusted source.</p>
     
 
 <div class="footersponsor">
-  <div><span>A community website sponsored by</span> <a href="https://bitcoinfoundation.org/"><img src="/img/brand/bitcoinfoundation.png" alt="Bitcoin Foundation"></a></div>
+  <!--<div><span>A community website sponsored by</span> <a href="https://bitcoinfoundation.org/"><img src="/img/brand/bitcoinfoundation.png" alt="Bitcoin Foundation"></a></div>-->
 </div>
 
     

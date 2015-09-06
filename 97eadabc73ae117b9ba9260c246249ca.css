@@ -216,7 +216,6 @@ div.post{max-width:40em;margin-right:auto;margin-left:auto}
 .post-meta{margin-top:20px;font-style:italic}
 .post-title{padding-top:20px}
 table.privacy-comparison td,table.privacy-comparison th{padding:3px}
-table.privacy-comparison td{max-width:34%}
 table.privacy-comparison tr.empty{height:1em}
 table.privacy-comparison td:nth-child(1n+2){width:120px}
 table.validation{width:100%}
@@ -226,7 +225,8 @@ table.validation tr:nth-child(even)>td{cursor:pointer}
 table.validation tr:nth-child(even)>td:hover{color:#000}
 .received_transactions td{width:50%}
 #system-requirements-accordion div{padding:0}
-button.js.showcolumn{border:0;margin:15px}
+.service-choose a{display:block;margin:20px 0}
+button.js.showcolumn{border:0;margin:10px}
 .not-displayed{display:none}
 br.big{margin-bottom:50px}
 .font2x{font-size:200%}
@@ -332,6 +332,7 @@ button.active{text-decoration:underline}
 .tablehalf h2 img{width:auto;height:auto}
 .tablehalf p{text-align:left}
 .contributors{width:890px;text-align:left;font-size:80%}
+.one-column .contributors{width:660px}
 .contributors img{width:16px;height:16px}
 .contributors div{padding:8px 0;width:215px;overflow:hidden;display:inline-block;vertical-align:top}
 .contributors div div{width:auto;padding:0}

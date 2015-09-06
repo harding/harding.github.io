@@ -58411,9 +58411,6 @@
   <loc>https://bitcoin.org/en/blog</loc>
 </url>
 <url>
-  <loc>https://bitcoin.org/en/developer-documentation</loc>
-</url>
-<url>
   <loc>https://bitcoin.org/en/developer-examples</loc>
 </url>
 <url>
@@ -58421,6 +58418,9 @@
 </url>
 <url>
   <loc>https://bitcoin.org/en/developer-guide</loc>
+</url>
+<url>
+  <loc>https://bitcoin.org/en/developer-documentation</loc>
 </url>
 <url>
   <loc>https://bitcoin.org/en/developer-reference</loc>
