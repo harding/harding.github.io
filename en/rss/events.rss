@@ -12,13 +12,6 @@
 	</image>
 	
         <item>
-            <title>Bitcoin Wednesday Conference, Amsterdam - The Netherlands</title>
-            <link>http://www.bitcoinwednesday.com/event/bitcoin-wednesday-27/</link>
-            <guid>http://www.bitcoinwednesday.com/event/bitcoin-wednesday-27/</guid>
-            <pubDate>Wed, 02 Sep 2015 00:00:00 GMT</pubDate>
-        </item>
-	
-        <item>
             <title>Consensus 2015, New York - United States</title>
             <link>http://www.coindesk.com/events/consensus-2015/</link>
             <guid>http://www.coindesk.com/events/consensus-2015/</guid>
@@ -61,16 +54,16 @@
         </item>
 	
         <item>
-            <title>Blockchain@Birmingham, Birmingham - United Kingdom</title>
-            <link>https://blockchainbirmingham.wordpress.com</link>
-            <guid>https://blockchainbirmingham.wordpress.com</guid>
+            <title>Bitcoin Thrill Day 2015, Biddinghuizen - The Netherlands</title>
+            <link>https://thrilldays.bitcoinembassy.nl/</link>
+            <guid>https://thrilldays.bitcoinembassy.nl/</guid>
             <pubDate>Fri, 18 Sep 2015 00:00:00 GMT</pubDate>
         </item>
 	
         <item>
-            <title>Bitcoin Thrill Day 2015, Biddinghuizen - The Netherlands</title>
-            <link>https://thrilldays.bitcoinembassy.nl/</link>
-            <guid>https://thrilldays.bitcoinembassy.nl/</guid>
+            <title>Blockchain@Birmingham, Birmingham - United Kingdom</title>
+            <link>https://blockchainbirmingham.wordpress.com</link>
+            <guid>https://blockchainbirmingham.wordpress.com</guid>
             <pubDate>Fri, 18 Sep 2015 00:00:00 GMT</pubDate>
         </item>
 	
@@ -128,6 +121,13 @@
             <link>http://altconvention.com</link>
             <guid>http://altconvention.com</guid>
             <pubDate>Thu, 08 Oct 2015 00:00:00 GMT</pubDate>
+        </item>
+	
+        <item>
+            <title>DevCore Workshop: Developing the Developers, San Mateo, CA - USA</title>
+            <link>http://bitcoinfoundation.org</link>
+            <guid>http://bitcoinfoundation.org</guid>
+            <pubDate>Sun, 18 Oct 2015 00:00:00 GMT</pubDate>
         </item>
 	
         <item>
